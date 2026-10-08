@@ -11,7 +11,7 @@
 [![Download til Windows](https://img.shields.io/badge/%E2%AC%87%20Download%20til%20Windows-v0.0.1-0495d8?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/zhiftyDK/stjernehotellet-2.0/releases/tag/v0.0.1)
 
 ![Fanprojekt](https://img.shields.io/badge/Fanprojekt-ikke%20officielt-ff69b4?style=flat-square)
-![Ingen build](https://img.shields.io/badge/Build-ingen-success?style=flat-square)
+[![Release](https://img.shields.io/github/v/release/zhiftyDK/stjernehotellet-2.0?include_prereleases&style=flat-square&label=Release&color=success)](https://github.com/zhiftyDK/stjernehotellet-2.0/releases)
 ![JavaScript](https://img.shields.io/badge/JavaScript-ES%20modules-f7df1e?style=flat-square&logo=javascript&logoColor=black)
 ![Sprog](https://img.shields.io/badge/Sprog-dansk-c8102e?style=flat-square)
 
