@@ -8,7 +8,7 @@
 
 <br>
 
-[![Spil online](https://img.shields.io/badge/%E2%96%B6%20Spil%20online-stjernehotellet.vercel.app-0495d8?style=for-the-badge)](https://stjernehotellet.vercel.app/)
+[![Download til Windows](https://img.shields.io/badge/%E2%AC%87%20Download%20til%20Windows-v0.0.1-0495d8?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/zhiftyDK/stjernehotellet-2.0/releases/tag/v0.0.1)
 
 ![Fanprojekt](https://img.shields.io/badge/Fanprojekt-ikke%20officielt-ff69b4?style=flat-square)
 ![Ingen build](https://img.shields.io/badge/Build-ingen-success?style=flat-square)
