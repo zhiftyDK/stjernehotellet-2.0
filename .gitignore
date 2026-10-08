@@ -1,0 +1,4 @@
+# Dependencies, build output and installers inside the app folder
+/app/node_modules/
+/app/out/
+/app/installer/

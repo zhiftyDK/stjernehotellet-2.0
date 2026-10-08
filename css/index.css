@@ -1,0 +1,1020 @@
+.minispil {
+    --bg: #14161c;
+    --panel: #1c1f28;
+    --line: #2b3040;
+    --ink: #e8eaf0;
+    --dim: #939bb0;
+    --accent: #6ee7a8;
+    color-scheme: dark
+}
+
+.minispil * {
+    box-sizing: border-box
+}
+
+.minispil {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 14px/1.5 system-ui, -apple-system, Segoe UI, sans-serif
+}
+
+.minispil .app {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px 20px 40px
+}
+
+.minispil header h1 {
+    margin: 0;
+    font-size: 22px;
+    letter-spacing: -.01em
+}
+
+.minispil header .sub {
+    margin: 4px 0 20px;
+    color: var(--dim);
+    font-size: 13px
+}
+
+.minispil .layout {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 16px;
+    align-items: start
+}
+
+@media (max-width: 760px) {
+    .minispil .layout {
+        grid-template-columns: 1fr
+    }
+}
+
+.minispil aside {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px
+}
+
+.minispil .field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px
+}
+
+.minispil .field>span {
+    font-size: 12px;
+    color: var(--dim)
+}
+
+.minispil select,
+.minispil input[type=range] {
+    width: 100%
+}
+
+.minispil select {
+    background: #11131a;
+    color: var(--ink);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 7px 8px;
+    font: inherit
+}
+
+.minispil .row {
+    display: flex;
+    gap: 8px
+}
+
+.minispil button {
+    flex: 1;
+    background: #262b38;
+    color: var(--ink);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 8px 10px;
+    font: inherit;
+    cursor: pointer
+}
+
+.minispil button:hover {
+    background: #2f3546
+}
+
+.minispil .row button+button {
+    flex: 0 0 44px
+}
+
+.minispil .check {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px
+}
+
+.minispil .meta {
+    margin: 0;
+    padding-top: 12px;
+    border-top: 1px solid var(--line);
+    display: grid;
+    gap: 4px;
+    font-size: 12px
+}
+
+.minispil .meta>div {
+    display: flex;
+    justify-content: space-between
+}
+
+.minispil .meta dt {
+    color: var(--dim)
+}
+
+.minispil .meta dd {
+    margin: 0;
+    font-variant-numeric: tabular-nums
+}
+
+.minispil .note {
+    margin: 0;
+    font-size: 11.5px;
+    line-height: 1.5;
+    color: var(--dim);
+    border-top: 1px solid var(--line);
+    padding-top: 12px
+}
+
+.minispil main {
+    background: repeating-conic-gradient(#1a1d25, #1a1d25 25%, #171a21 0%, #171a21 50%) 50% / 20px 20px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    overflow: hidden
+}
+
+.minispil .stage {
+    display: block;
+    width: 100%;
+    height: 620px
+}
+
+@media (max-width: 760px) {
+    .minispil .stage {
+        height: 420px
+    }
+}
+
+.minispil .msg {
+    padding: 60px 24px;
+    text-align: center;
+    color: var(--dim)
+}
+
+.minispil .msg.error {
+    color: #ff9aa8
+}
+
+.minispil .msg .hint {
+    color: var(--dim);
+    font-size: 13px
+}
+
+.minispil code {
+    background: #11131a;
+    padding: 2px 6px;
+    border-radius: 4px
+}
+
+.minispil .debug {
+    border-top: 1px solid var(--line);
+    padding-top: 12px
+}
+
+.minispil .debug summary {
+    cursor: pointer;
+    font-size: 12px;
+    color: var(--dim);
+    -webkit-user-select: none;
+    user-select: none
+}
+
+.minispil .debug>*:not(summary) {
+    margin-top: 12px
+}
+
+.minispil .debug .note {
+    border: 0;
+    padding-top: 0
+}
+
+.minispil .tabs {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap
+}
+
+.minispil .tabs button {
+    flex: 1 1 auto;
+    min-width: 72px
+}
+
+.minispil .tabs button {
+    flex: 1;
+    padding: 7px 10px;
+    font-size: 12px;
+    background: #14161d;
+    color: var(--dim);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    cursor: pointer
+}
+
+.minispil .tabs button.on {
+    background: #1e2430;
+    color: #e8ecf4;
+    border-color: #3a4557
+}
+
+.minispil .meta .dim {
+    color: var(--dim);
+    font-weight: 400
+}
+
+.minispil .picross {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start
+}
+
+.minispil .pxtop {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap
+}
+
+.minispil .liv .hjerte {
+    color: #ff6b81;
+    font-size: 18px;
+    margin-right: 2px
+}
+
+.minispil .liv .hjerte.tom {
+    color: #333a48
+}
+
+.minispil .pxinfo {
+    color: var(--dim);
+    font-size: 13px
+}
+
+.minispil .gitter {
+    display: grid;
+    align-items: end
+}
+
+.minispil .spor {
+    display: flex;
+    color: var(--dim);
+    font-size: 13px;
+    font-variant-numeric: tabular-nums
+}
+
+.minispil .spor.vandret {
+    justify-content: flex-end;
+    align-items: center;
+    gap: 6px;
+    padding-right: 6px
+}
+
+.minispil .spor.lodret {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1px
+}
+
+.minispil .gitter .c {
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    cursor: pointer;
+    background: #1a1e28;
+    border: 1px solid #2c3342;
+    border-radius: 4px
+}
+
+.minispil .gitter .c:hover:not(:disabled) {
+    background: #232937;
+    border-color: #3d4759
+}
+
+.minispil .gitter .c.fyldt {
+    background: #6ee7a8;
+    border-color: #6ee7a8;
+    cursor: default
+}
+
+.minispil .gitter .c.forkert {
+    background: #3a1f26;
+    border-color: #ff6b81;
+    cursor: default
+}
+
+.minispil .gitter .c.forkert:after {
+    content: "×";
+    color: #ff6b81;
+    font-size: 20px;
+    line-height: 42px
+}
+
+.minispil .gitter .c.afsloeret {
+    background: #2f4a3c;
+    border-color: #46705a
+}
+
+.minispil .gitter .c:disabled {
+    cursor: default
+}
+
+.minispil .resultat {
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-size: 14px
+}
+
+.minispil .resultat.vundet {
+    background: #1d3a2b;
+    color: #8ef0b8
+}
+
+.minispil .resultat.tabt {
+    background: #3a1f26;
+    color: #ffa8b4
+}
+
+.minispil .pxstyr {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 340px
+}
+
+.minispil .byttespil {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start
+}
+
+.minispil .bstop {
+    display: flex;
+    align-items: baseline;
+    gap: 14px
+}
+
+.minispil .tid {
+    font-size: 20px;
+    font-weight: 600;
+    color: #8ab4ff;
+    font-variant-numeric: tabular-nums
+}
+
+.minispil .tid.lav {
+    color: #ff6b81
+}
+
+.minispil .bgitter {
+    display: grid;
+    gap: 2px;
+    background: #0d0f14;
+    padding: 2px;
+    border-radius: 6px
+}
+
+.minispil .brik {
+    padding: 0;
+    border: 2px solid transparent;
+    border-radius: 3px;
+    cursor: pointer;
+    image-rendering: pixelated;
+    background-repeat: no-repeat
+}
+
+.minispil .brik:hover:not(:disabled) {
+    border-color: #5a6883
+}
+
+.minispil .brik.valgt {
+    border-color: #ffd24a;
+    box-shadow: 0 0 0 2px #ffd24a59
+}
+
+.minispil .brik.laast {
+    cursor: default;
+    border-color: transparent
+}
+
+:root {
+    color-scheme: dark;
+    --bg: #242429;
+    --panel: #221d2b;
+    --kant: #362e44;
+    --tekst: #f3eef8;
+    --dim: #b3a8c2
+}
+
+* {
+    box-sizing: border-box
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--tekst);
+    font: 14px/1.5 system-ui, Segoe UI, sans-serif
+}
+
+.ramme {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 16px
+}
+
+@media not all and (hover: hover) and (pointer: fine) {
+    body {
+        background: #000;
+        overscroll-behavior: none
+    }
+
+    .ramme {
+        max-width: none;
+        padding: 0;
+        height: 100vh;
+        height: 100dvh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden
+    }
+
+    .ramme>.spil,
+    .ramme>canvas.vent {
+        flex: none;
+        width: min(100vw, calc(100vh * 1365 / 768));
+        width: min(100vw, calc(100dvh * 1365 / 768))
+    }
+
+    .ramme canvas,
+    .minispil,
+    .minispil-flade {
+        border-radius: 0
+    }
+}
+
+.vend {
+    display: none
+}
+
+@media not all and (hover: hover) and (pointer: fine) {
+    @media (orientation: portrait) {
+        .vend {
+            display: flex;
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 100;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            background: #000000e6;
+            color: #fff;
+            text-align: center;
+            padding: 24px
+        }
+
+        .vend p {
+            margin: 0;
+            font-size: 22px;
+            font-weight: 700
+        }
+
+        .vend .vend-lille {
+            font-size: 15px;
+            font-weight: 400;
+            color: var(--dim)
+        }
+
+        .vend svg {
+            margin-bottom: 12px;
+            fill: #fff;
+            animation: vend-drej 2.4s ease-in-out infinite
+        }
+
+        .vend-telefon {
+            fill: none;
+            stroke: #fff;
+            stroke-width: 3
+        }
+    }
+}
+
+@keyframes vend-drej {
+
+    0%,
+    25% {
+        transform: rotate(0)
+    }
+
+    50%,
+    85% {
+        transform: rotate(-90deg)
+    }
+
+    to {
+        transform: rotate(0)
+    }
+}
+
+.profil {
+    position: relative;
+    width: 240px;
+    margin: 12px 0 0 auto;
+    aspect-ratio: 523 / 477;
+    pointer-events: none;
+    container-type: inline-size
+}
+
+@media (min-width: 1676px) {
+    .profil {
+        position: fixed;
+        right: 12px;
+        bottom: 12px;
+        margin: 0;
+        z-index: 50;
+        width: min(340px, calc((100vw - 1320px)/2 - 8px))
+    }
+}
+
+.profil img {
+    display: block;
+    height: auto;
+    -webkit-user-select: none;
+    user-select: none
+}
+
+.profil-hoved {
+    position: absolute;
+    left: 0;
+    top: 38.16%;
+    width: 63.29%;
+    pointer-events: auto;
+    cursor: pointer
+}
+
+.profil-snak {
+    position: absolute;
+    left: 32.7%;
+    top: 0;
+    width: 67.3%;
+    transform-origin: 42.6% 95%;
+    opacity: 0;
+    transform: scale(.6);
+    transition: opacity .25s ease, transform .3s cubic-bezier(.34, 1.56, .64, 1)
+}
+
+.profil-snak.vist {
+    opacity: 1;
+    transform: none
+}
+
+.profil-snak img {
+    width: 100%
+}
+
+.profil-tekst {
+    position: absolute;
+    left: 21.3%;
+    top: 19.4%;
+    width: 63.9%;
+    height: 42.6%;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-weight: 700;
+    font-size: 5.8cqw;
+    line-height: 1.2;
+    color: #fff;
+    text-shadow: 0 1px 3px #000
+}
+
+.spil {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 280px;
+    gap: 14px;
+    align-items: start
+}
+
+canvas {
+    width: 100%;
+    display: block;
+    border-radius: 8px;
+    background: #0d0b11;
+    touch-action: none;
+    cursor: grab
+}
+
+.panel {
+    background: var(--panel);
+    border: 1px solid var(--kant);
+    border-radius: 8px;
+    padding: 12px
+}
+
+.panel h2 {
+    font-size: 14px;
+    margin: 0 0 8px
+}
+
+.hud {
+    display: flex;
+    gap: 14px;
+    font-variant-numeric: tabular-nums;
+    margin-bottom: 8px
+}
+
+.hud b {
+    font-weight: 600
+}
+
+.etage {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 6px 0;
+    border-top: 1px solid var(--kant)
+}
+
+button {
+    font: inherit;
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 1px solid var(--kant);
+    background: #2e2739;
+    color: var(--tekst);
+    cursor: pointer
+}
+
+button:disabled {
+    opacity: .45;
+    cursor: default
+}
+
+.note {
+    color: var(--dim);
+    font-size: 12px
+}
+
+.msg {
+    padding: 24px;
+    color: var(--dim)
+}
+
+canvas.vent {
+    cursor: progress;
+    background: #000
+}
+
+canvas.vent.ud {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    pointer-events: none;
+    animation: vent-ud .5s cubic-bezier(.37, 0, .63, 1) forwards
+}
+
+.minispil-flade canvas.vent {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    border-radius: 0
+}
+
+@keyframes vent-ud {
+    0% {
+        opacity: 1
+    }
+
+    to {
+        opacity: 0
+    }
+}
+
+.vaelger {
+    border: 1px solid #ffd46b55;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 12px;
+    background: #1b1722
+}
+
+.vaelger-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center
+}
+
+.vaelger-top h2 {
+    margin: 0
+}
+
+.gitter {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(76px, 1fr));
+    gap: 6px;
+    max-height: 420px;
+    overflow-y: auto;
+    margin-top: 8px
+}
+
+.gitter button {
+    padding: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    font-size: 11px
+}
+
+.gitter button.valgt {
+    border-color: #ffd46b;
+    opacity: 1
+}
+
+canvas.mini {
+    width: 68px;
+    height: 68px;
+    background: none;
+    cursor: inherit;
+    border-radius: 4px
+}
+
+.liste {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    max-height: 420px;
+    overflow-y: auto;
+    margin-top: 8px
+}
+
+.liste button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-align: left;
+    padding: 4px 8px
+}
+
+.liste .ret {
+    display: flex;
+    flex-direction: column
+}
+
+.liste canvas.mini {
+    width: 48px;
+    height: 48px
+}
+
+.besked {
+    background: #3a2b16;
+    border: 1px solid #ffd46b88;
+    border-radius: 6px;
+    padding: 6px 10px;
+    margin-bottom: 10px
+}
+
+.skaerm {
+    position: relative
+}
+
+.skaerm .besked {
+    position: absolute;
+    left: 50%;
+    bottom: 16px;
+    transform: translate(-50%);
+    max-width: 80%;
+    text-align: center;
+    margin: 0;
+    pointer-events: none
+}
+
+.spil.uden-panel {
+    grid-template-columns: minmax(0, 1fr)
+}
+
+.spil.uden-panel .panel {
+    display: none
+}
+
+.minispil {
+    border-radius: 8px;
+    width: calc(100% * 1280 / 1365);
+    margin: 0 auto;
+    position: relative;
+    z-index: 1
+}
+
+.minispil-flade {
+    position: relative;
+    aspect-ratio: 1280 / 768;
+    background: #000;
+    border-radius: 8px;
+    overflow: hidden
+}
+
+.minispil-flade .spilflade {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0
+}
+
+.minispil-flade .spilflade>canvas {
+    width: 100%;
+    height: 100%;
+    border-radius: 0
+}
+
+.minispil-flade .msg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: grid;
+    place-items: center;
+    margin: 0
+}
+
+.minispil-ramme {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent !important;
+    cursor: pointer;
+    border-radius: 0
+}
+
+.minispil-skilt {
+    position: absolute;
+    cursor: pointer
+}
+
+.profil-snyd {
+    position: fixed;
+    right: 360px;
+    bottom: 16px;
+    z-index: 50;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 150px;
+    padding: 10px;
+    background: #fffaf0;
+    border: 3px solid #b5701c;
+    border-radius: 12px;
+    font: 700 14px sans-serif;
+    color: #3b2306;
+    pointer-events: auto;
+    box-shadow: 0 4px 14px #0006
+}
+
+.profil-snyd b {
+    font-size: 16px;
+    text-align: center
+}
+
+.profil-snyd button {
+    font: 700 14px sans-serif;
+    color: #fff;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, .5);
+    padding: 6px 10px;
+    border-radius: 8px;
+    border: 2px solid #8a4f0e;
+    background: #e08a1e;
+    opacity: 1;
+    cursor: pointer
+}
+
+.profil-snyd button:hover {
+    background: #f29d2e
+}
+
+.profil-snyd button:last-child {
+    background: #8a8a8a;
+    border-color: #5c5c5c
+}
+
+.profil-snyd small {
+    color: #1f6b12;
+    font-size: 13px;
+    text-align: center
+}
+
+.profil-hoved.ryster {
+    animation: profil-ryst .45s ease-out
+}
+
+@keyframes profil-ryst {
+
+    0%,
+    to {
+        transform: translate(0) rotate(0)
+    }
+
+    15% {
+        transform: translate(calc(var(--ryst) * -1 * 1px), calc(var(--ryst) * .4 * 1px)) rotate(calc(var(--ryst) * -.6 * 1deg))
+    }
+
+    30% {
+        transform: translate(calc(var(--ryst) * 1px), calc(var(--ryst) * -.4 * 1px)) rotate(calc(var(--ryst) * .6 * 1deg))
+    }
+
+    45% {
+        transform: translate(calc(var(--ryst) * -.7 * 1px), calc(var(--ryst) * -.3 * 1px)) rotate(calc(var(--ryst) * -.4 * 1deg))
+    }
+
+    60% {
+        transform: translate(calc(var(--ryst) * .5 * 1px), calc(var(--ryst) * .3 * 1px)) rotate(calc(var(--ryst) * .3 * 1deg))
+    }
+
+    80% {
+        transform: translate(calc(var(--ryst) * -.2 * 1px)) rotate(0)
+    }
+}
+
+.under-spil {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px
+}
+
+@media not all and (hover: hover) and (pointer: fine) {
+    .under-spil {
+        display: none
+    }
+}
+
+.nyheder-knap {
+    position: relative;
+    margin-top: 12px;
+    padding: 6px 16px;
+    border: 3px solid #fff;
+    border-radius: 12px;
+    background: linear-gradient(#8fd6ff, #4fb2ef);
+    color: #ffb31f;
+    font: 900 16px/1.1 system-ui, Segoe UI, sans-serif;
+    text-shadow: -1px -1px 0 #7a3d00, 1px -1px 0 #7a3d00, -1px 1px 0 #7a3d00, 1px 1px 0 #7a3d00, 0 2px 0 #7a3d00;
+    box-shadow: 0 3px 8px #00000059;
+    cursor: pointer;
+    transition: transform .12s ease
+}
+
+.nyheder-knap:hover {
+    transform: scale(1.06)
+}
+
+.nyheder-prik {
+    position: absolute;
+    top: -7px;
+    right: -7px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #e8322b;
+    border: 2px solid #fff
+}
+.minispil.bred {
+    width: 100%
+}

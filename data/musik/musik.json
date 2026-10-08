@@ -1,0 +1,23 @@
+{
+ "kilde": "StateMinigame::mMusicIds og StateMenu::init (iOS-binaeren), filerne fra test 5 res/raw",
+ "spil": [
+  "stjernehotellet",
+  "telletilti",
+  "instrumentalfun",
+  "stranden",
+  "telletilti",
+  "festogfarver",
+  "sologsommer",
+  "stranden",
+  "sologsommer",
+  "instrumentalfun",
+  "sologsommer",
+  "zoomusic",
+  null,
+  null,
+  null,
+  null
+ ],
+ "oe": "festogfarver",
+ "lydstyrke": 0.38909912109375
+}

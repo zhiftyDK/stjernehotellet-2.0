@@ -1,0 +1,19 @@
+{
+  "name": "Stjernehotellet",
+  "version": "1.0.0",
+  "description": "Byg Pixelines hotel, tag imod gæster og kendte gæster, og spil minispillene på øen.",
+  "main": "app.js",
+  "scripts": {
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
+  },
+  "keywords": [],
+  "author": "zhiftyDK",
+  "license": "ISC",
+  "devDependencies": {
+    "@electron-forge/cli": "^8.0.1",
+    "@electron-forge/maker-squirrel": "^8.0.1",
+    "electron": "^44.7.0"
+  }
+}
