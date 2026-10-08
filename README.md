@@ -1,65 +1,164 @@
-# Stjernehotellet – no build step
+<div align="center">
 
-Plain HTML + CSS + native ES modules. Edit a file, refresh the browser. No npm, no Vite.
+<img src="img/logo-pixeline.svg" alt="Pixeline" width="460">
+<br>
+<img src="img/logo-stjernehotellet.svg" alt="Stjernehotellet" width="420">
 
-## Run
-1. Copy `data/` and `profil/` from your original build folder into this folder (next to `index.html`).
-2. Serve the folder with any static web server (browsers block ES modules on `file://`), e.g.:
+### Byg dit eget hotel, tag imod gæster og spil minispillene på øen
 
-       python3 -m http.server 8000      # then open http://localhost:8000
-   or `npx serve`, or VS Code "Live Server".
+<br>
 
-## Layout
-- `index.html` – page + import map (maps `react` to `vendor/react.js`).
-- `css/index.css`, `custom.css` – styles.
-- `js/main.js` – entry point. `js/ui`, `js/screens`, `js/game`, `js/engine`, `js/render`, `js/audio`, `js/minigames` – the game.
-- `vendor/react.js` – React 18.3.1 + ReactDOM as one file (third-party, don't edit).
+[![Spil online](https://img.shields.io/badge/%E2%96%B6%20Spil%20online-stjernehotellet.vercel.app-0495d8?style=for-the-badge)](https://stjernehotellet.vercel.app/)
 
-## Notes
-- The code is de-minified but local variables are still short (`e`, `t`, `n`), and there are no comments.
-- Components are written as `J.jsx(...)` calls rather than JSX tags, so no compiler is needed.
-- Vercel analytics was removed (it did nothing outside Vercel).
-- The game still uses React for its UI. Replacing React with hand-written DOM code would mean rewriting every screen and minigame component.
+![Fanprojekt](https://img.shields.io/badge/Fanprojekt-ikke%20officielt-ff69b4?style=flat-square)
+![Ingen build](https://img.shields.io/badge/Build-ingen-success?style=flat-square)
+![JavaScript](https://img.shields.io/badge/JavaScript-ES%20modules-f7df1e?style=flat-square&logo=javascript&logoColor=black)
+![Sprog](https://img.shields.io/badge/Sprog-dansk-c8102e?style=flat-square)
 
+<br>
 
-## Start screen & multiple saves
+<img src="docs/billeder/01-start.jpg" alt="Startskærmen med øen og Stjernehotellet" width="860">
 
-On launch the game shows a start screen (island backdrop, game-style frames and font):
-- pick a saved player to continue, **NYT SPIL** to create a new one (type a name, Enter/START),
-  or the red X to delete one (with confirmation). Up to 8 saves.
-- In-game, **Indstillinger → SKIFT SPILLER** saves and returns to the start screen.
-- Existing single-save progress is automatically moved into a first slot called "SPILLER 1".
+</div>
 
-Code: `js/storage/saves.js` (slots; redirects the game's localStorage keys to `slot:<id>:<key>`),
-`js/screens/start-screen.js` (canvas UI), wiring in `js/ui/app.js`.
-Saves live in the browser's localStorage for the origin (address + port) you serve from.
+---
 
-Startup flow: title screen with **START SPIL** (this click is also what lets the browser play the theme
-music immediately) → player selection → game. The theme track carries on seamlessly into the game.
-The house-shaped menu sign (top right, always shown) opens the home menu from both the hotel and the map view whenever no window is open
-(`menuKnap` in `js/render/canvas-helpers.js` and `hitMenuButton` in `js/screens/game-screen.js`).
+## Om projektet
 
-The home menu also has **Skift spiller** (back to the start screen) and **Luk spillet** (closes the app when run inside
-Electron via `window.electronAPI.closeApp()`, otherwise returns to the start screen). The old × button is gone.
-Electron note: to let the title-screen music start without any click, create the window with
-`webPreferences: { autoplayPolicy: 'no-user-gesture-required' }`.
+**Pixeline – Stjernehotellet** er et lille, kærligt **fanprojekt**. Det er en genskabelse af det gamle Pixeline-spil, lavet for at **bevare** det og **moderniseret** så det kan spilles i en almindelig browser eller som et selvstændigt program på computeren.
 
-HUD layout: the top-left HUD (coins, rubies, star bar, mail) is shifted left by `HUD_SHIFT` (`js/engine/constants.js`) in the hotel,
-map, Zoo and Pop. "Skift spiller" returns to the player list (skipping the title screen); "Luk spillet" returns to the title screen.
+> [!IMPORTANT]
+> **Dette er ikke det officielle spil.** Projektet er ikke tilknyttet, godkendt eller støttet af de oprindelige rettighedshavere. Se afsnittet [Ophavsret og rettigheder](#ophavsret-og-rettigheder).
 
-The house (menu) sign is also shown during minigames: `GameScreen`'s canvas becomes a transparent overlay while a minigame runs,
-and the minigame is paused (`ekstraPause` prop on `MinigameHost`) while the home menu is open.
+## Det kan du i spillet
 
-16:9: the main screen (hotel, map, menus, start screen) is now 1365x768 (`GAME_WIDTH` in `js/engine/constants.js`); right-hand HUD elements
-are offset by `WIDTH_EXTRA`. Minigames keep their 1280x768 canvas and are centred (CSS `.minispil` in `css/index.css`).
+- 🏨 **Byg og indret dit hotel** – etager, møbler og gæster, og tjen penge undervejs.
+- 🌴 **Udforsk øen** – træk rundt på kortet og besøg zoo'en, scenen, minigolfbanen og de andre steder.
+- 🎮 **Spil 12 minispil** – fra detektivarbejde med kikkert til popband og speedbåde.
+- 💾 **Flere gemte spil** – op til 8 spillere, som du frit kan oprette, skifte imellem og slette.
+- 🏠 **Hovedmenu overalt** – hus-skiltet øverst til højre er altid ved hånden, også midt i et minispil.
+- 🖥️ **Hele skærmen i 16:9** – ingen sorte kanter.
+- 🎵 **Musik og lyde** med lydstyrke under Indstillinger.
 
-Title/player screens use the logos in `img/` (hand-built vector SVGs, crisp at any size; replace
-`img/logo-pixeline.svg` and `img/logo-stjernehotellet.svg` with your own artwork any time).
-During minigames a blurred copy of the game is stretched behind the 1280px playfield (`MinigameAmbient` in `js/screens/game-screen.js`) so the 16:9 screen has no black bars.
+<div align="center">
+<table>
+  <tr>
+    <td><img src="docs/billeder/02-hotel.jpg" alt="Hotellet og øen" width="420"></td>
+    <td><img src="docs/billeder/09-popstars.jpg" alt="Popstars – bandets scene" width="420"></td>
+  </tr>
+  <tr>
+    <td align="center"><sub>Hotellet og øen</sub></td>
+    <td align="center"><sub>Popstars – bandets scene</sub></td>
+  </tr>
+</table>
+</div>
 
-## Per-game 16:9 widening
-`WIDE_MINIGAMES` in `js/engine/constants.js` lists minigames rendered at true 16:9 (currently Golf, Platform, Zoo, Pop). Each receives a `bredde` prop. All other minigames stay 1280 wide, centred, with a blurred ambient fill.
+## Minispillene
 
-## Where saves live
-- **Website:** plain `localStorage` (per origin). `js/storage/persist.js` only asks the browser to keep the data (`navigator.storage.persist`).
-- **Electron:** `localStorage` is just a cache. The real copy is `saves.json` (+ `saves.json.bak`) in Electron's user-data folder, written by the main process through `window.electronAPI.storage` (see the Electron `app.js` / `preload.js`). The port/origin the game is served from no longer matters.  Nothing is ever read from the browser's own storage in Electron: only the file counts (old localhost saves are not imported).
+<div align="center">
+<table>
+  <tr>
+    <td><img src="docs/billeder/03-kuffert.jpg" alt="Kuffert" width="280"></td>
+    <td><img src="docs/billeder/04-golf.jpg" alt="Golf" width="280"></td>
+    <td><img src="docs/billeder/05-is.jpg" alt="Is" width="280"></td>
+  </tr>
+  <tr>
+    <td align="center"><sub>Kuffert</sub></td>
+    <td align="center"><sub>Golf</sub></td>
+    <td align="center"><sub>Is</sub></td>
+  </tr>
+  <tr>
+    <td><img src="docs/billeder/06-picross.jpg" alt="Picross" width="280"></td>
+    <td><img src="docs/billeder/07-baad.jpg" alt="Båd" width="280"></td>
+    <td><img src="docs/billeder/08-luftpost.jpg" alt="Luftpost" width="280"></td>
+  </tr>
+  <tr>
+    <td align="center"><sub>Picross</sub></td>
+    <td align="center"><sub>Båd</sub></td>
+    <td align="center"><sub>Luftpost</sub></td>
+  </tr>
+</table>
+</div>
+
+| | Minispil | | Minispil |
+|:-:|---|:-:|---|
+| 1 | Findting | 7 | Byttespil |
+| 2 | Sortering | 8 | Picross |
+| 3 | Luftpost | 9 | Båd |
+| 4 | Kuffert | 10 | Platform |
+| 5 | Golf | 11 | Zoo |
+| 6 | Is | 12 | Popstars |
+
+## Kom i gang
+
+Spillet er skrevet i almindelig HTML, CSS og JavaScript (ES-moduler) – **der er intet build-trin**. Ret en fil, genindlæs siden, og du kan se ændringen.
+
+### Kør det lokalt
+
+1. Sørg for at mapperne `data/` og `profil/` ligger ved siden af `index.html`.
+2. Start en lille webserver i projektmappen (browsere tillader ikke ES-moduler direkte fra `file://`):
+
+   ```bash
+   # Python
+   python3 -m http.server 8000
+
+   # eller Node
+   npx serve
+   ```
+
+3. Åbn [http://localhost:8000](http://localhost:8000).
+
+Du kan også bruge f.eks. *Live Server* i VS Code.
+
+### Som programmet på computeren (Electron)
+
+Spillet kan pakkes ind i en Electron-app. Her ligger gemte spil i en fil (`saves.json`) i programmets brugermappe, så de ikke afhænger af, hvilken port spillet kører på.
+
+## Gemte spil
+
+| Hvor spillet køres | Hvor dine spil gemmes |
+|---|---|
+| **I browseren** (website) | Browserens `localStorage` for adressen, du spiller på |
+| **Som program** (Electron) | `saves.json` i programmets brugermappe, med en sikkerhedskopi (`saves.json.bak`) |
+
+> [!NOTE]
+> Gemte spil i browseren hører til den browser og den adresse, du spiller på. Ryd du browserens data, forsvinder de.
+
+## Projektets opbygning
+
+```text
+index.html          Siden og import-map
+css/                Typografi og layout
+img/                Logoer (vektor-SVG)
+vendor/react.js     React 18 som én fil (tredjepart)
+js/
+├─ main.js          Indgang
+├─ ui/              App og menuer
+├─ screens/         Startskærm og hovedskærm
+├─ game/            Hotel, verden og spillogik
+├─ engine/          Animation, tweens og konstanter
+├─ render/          Tegning på canvas
+├─ audio/           Lyd og musik
+├─ storage/         Gemte spil
+└─ minigames/       De 12 minispil
+docs/               Billeder og teknisk dokumentation
+```
+
+Teknisk dokumentation til udviklere (på engelsk) ligger i [`docs/TEKNISK.md`](docs/TEKNISK.md).
+
+## Ophavsret og rettigheder
+
+Dette er et **uofficielt fanprojekt**, lavet af kærlighed til det oprindelige spil – ikke for at tjene penge.
+
+- **Pixeline**, **Stjernehotellet** og alle tilhørende figurer, tegninger, lyde, musik, tekster og andet indhold tilhører **de oprindelige rettighedshavere**. Alle rettigheder forbeholdes dem.
+- Projektet er **ikke** tilknyttet, godkendt eller sponsoreret af rettighedshaverne.
+- Spillet er genskabt med det formål at **bevare** et stykke dansk børnespilhistorie og at **modernisere** det, så det stadig kan spilles i dag.
+- Ønsker en rettighedshaver, at noget fjernes, respekteres det naturligvis.
+
+Logoerne i `img/` er tegnet på ny som vektorer og er ikke de originale logofiler.
+
+---
+
+<div align="center">
+<sub>Lavet med kærlighed til Pixeline 💛</sub>
+</div>
