@@ -9,7 +9,7 @@ Plain HTML + CSS + native ES modules (no framework). The game lives in `src/` an
 npm install
 npm run serve        # http://127.0.0.1:5500 (browsers block ES modules on file://)
 ```
-(Any static server pointed at `src/` works too, e.g. VS Code "Live Server".) See "Project layout, build and packaging" below for `npm run build web|windows`.
+(Any static server pointed at `src/` works too, e.g. VS Code "Live Server".) See "Project layout, build and packaging" below for `npm run build web|windows|mac`.
 
 ## Layout of src/
 - `index.html` – the page; loads `js/main.js` as an ES module (no import map, no third-party libraries).
@@ -88,7 +88,7 @@ Object property names (e.g. `kaeledyr`, `tilstand`) were deliberately left uncha
 src/        the game: index.html, css, custom.css, img, profil, data, js   (editable source, runs as-is)
 electron/   main.cjs (local web server + save file), preload.cjs, icon.ico/png
 installer/  installer.iss (Inno Setup)
-scripts/    build.mjs (CLI), lib/{bundle,web,windows,paths}.mjs, serve.mjs
+scripts/    build.mjs (CLI), lib/{bundle,web,windows,mac,stage,icns,paths}.mjs, serve.mjs
 dist/       build output (git-ignored): web/, app/, installer/
 ```
 
@@ -97,6 +97,7 @@ One root `package.json`; `npm install` once.
 - `npm run serve [-- dir]` – static server for `src/` (or a build folder), default port 5500.
 - `npm start` – run the Electron wrapper straight from `src/`.
 - `npm run build web` – `dist/web`: JavaScript bundled and minified with esbuild (one small main file plus one lazily loaded chunk per minigame), everything else copied.
+- `npm run build mac [arm64|x64]` – same bundle + staging (`lib/stage.mjs`), `icon.icns` generated from `electron/icon-mac.png` (or `icon.png`) by `lib/icns.mjs`, `@electron/packager` (darwin, arm64 and/or x64) -> `dist/app/Stjernehotellet-darwin-<arch>/Stjernehotellet.app` -> `dist/mac/Stjernehotellet-mac-<arch>.zip`. On macOS the app is also ad-hoc signed (`codesign -s -`) and a `.dmg` is made with `hdiutil`. `.github/workflows/build-mac.yml` and `build-windows.yml` (manual `workflow_dispatch` only) run the builds on macOS/Windows runners and upload the results as workflow artifacts (14 days); releases are created by hand. Not Apple-notarized (needs a paid developer account), so users open it once via right-click -> Open.
 - `npm run build windows` – bundle -> minimal Electron project (`dist/_stage`) -> `@electron/packager` (win32/x64; game files go to `resources/`, where `main.cjs` serves them) -> `dist/app/Stjernehotellet-win32-x64` -> Inno Setup (`ISCC`, found via `$ISCC`, the usual install folders or PATH; `installer.iss` receives `MyAppVersion`, `SourceDir`, `OutputDir`, `IconFile` as defines) -> `dist/installer/Stjernehotellet-Setup.exe`. The version comes from `package.json`.
 
 Never edit `dist/`.

@@ -4,13 +4,12 @@
 //   dist/_stage/                        what Electron packages: main process + preload + icon
 //   dist/app/Stjernehotellet-win32-x64/ the finished program (runs without installing)
 //   dist/installer/Stjernehotellet-Setup.exe   the installer (needs Inno Setup)
-import { cpSync, rmSync, mkdirSync, readdirSync, writeFileSync, existsSync } from 'node:fs';
+import { rmSync, mkdirSync, readdirSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { paths, packageJson, log } from './paths.mjs';
 import { buildGameBundle } from './bundle.mjs';
-
-const APP_NAME = 'Stjernehotellet';
+import { APP_NAME, stageElectronApp, loadPackager } from './stage.mjs';
 
 export async function buildWindows() {
   const bundleDir = join(paths.dist, '_bundle');
@@ -24,16 +23,12 @@ export async function buildWindows() {
 
   // 2. Minimal Electron project: only the files the main process needs.
   log('2/4  Gør Electron-projektet klar…');
-  rmSync(stageDir, { recursive: true, force: true });
-  mkdirSync(stageDir, { recursive: true });
-  for (const file of ['main.cjs', 'preload.cjs', 'icon.png']) cpSync(join(paths.electron, file), join(stageDir, file));
-  writeFileSync(join(stageDir, 'package.json'), JSON.stringify({ name: 'stjernehotellet', productName: APP_NAME, version: packageJson.version, description: packageJson.description, author: packageJson.author, main: 'main.cjs' }, null, 2));
+  stageElectronApp(stageDir);
 
   // 3. Package the Windows program. The game files go next to the exe (resources/), where main.cjs serves them from.
   log('3/4  Pakker Windows-programmet (Electron)…');
   rmSync(appOutDir, { recursive: true, force: true });
-  const mod = await import('@electron/packager');
-  const packager = mod.packager ?? mod.default?.packager ?? mod.default;
+  const packager = await loadPackager();
   const [outputPath] = await packager({
     dir: stageDir,
     out: appOutDir,
