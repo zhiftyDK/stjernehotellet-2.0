@@ -1,8 +1,8 @@
 <div align="center">
 
-<img src="img/logo-pixeline.svg" alt="Pixeline" width="460">
+<img src="src/img/logo-pixeline.svg" alt="Pixeline" width="460">
 <br>
-<img src="img/logo-stjernehotellet.svg" alt="Stjernehotellet" width="420">
+<img src="src/img/logo-stjernehotellet.svg" alt="Stjernehotellet" width="420">
 
 ### Byg dit eget hotel, tag imod gæster og spil minispillene på øen
 
