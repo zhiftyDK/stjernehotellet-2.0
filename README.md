@@ -113,16 +113,6 @@ npm run build windows    # Windows-program + installer  ->  dist/app/ og dist/in
 - `build windows` pakker spillet i Electron og laver derefter installationsprogrammet med [Inno Setup 6](https://jrsoftware.org/isinfo.php) (`winget install JRSoftware.InnoSetup`). Er Inno Setup ikke installeret, får du stadig programmet i `dist/app/`.
 - Vil du teste Electron-udgaven uden at bygge: `npm start`.
 
-### Udgiv på GitHub Pages
-
-Spillet er statisk og kan ligge på GitHub Pages. Workflowet `.github/workflows/pages.yml` bygger webudgaven (`npm run build web`) og udgiver den automatisk, hver gang der pushes til `main`.
-
-Engangsopsætning:
-
-1. Commit `package-lock.json` (oprettes af `npm install`) og mappen `.github/`.
-2. På GitHub: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
-3. Push til `main`. Siden kommer på `https://<brugernavn>.github.io/<repo>/`.
-
 ### Som programmet på computeren (Electron)
 
 Her ligger gemte spil i en fil (`saves.json`) i programmets brugermappe, så de ikke afhænger af, hvilken port spillet kører på.
@@ -135,7 +125,7 @@ Her ligger gemte spil i en fil (`saves.json`) i programmets brugermappe, så de 
 | **Som program** (Electron) | `saves.json` i programmets brugermappe, med en sikkerhedskopi (`saves.json.bak`) |
 
 > [!NOTE]
-> Gemte spil i browseren hører til den browser og den adresse, du spiller på. Ryd du browserens data, forsvinder de.
+> Gemte spil i browseren hører til den browser og den adresse, du spiller på. Sletter du browserens data, forsvinder de.
 
 ## Projektets opbygning
 
@@ -162,8 +152,6 @@ scripts/            Build-kommandoerne (npm run build web / windows) og testserv
 docs/               Billeder og teknisk dokumentation
 dist/               Byggeresultat (oprettes af build, ikke i git)
 ```
-
-Teknisk dokumentation til udviklere (på engelsk) ligger i [`docs/TEKNISK.md`](docs/TEKNISK.md).
 
 ## Ophavsret og rettigheder
 
