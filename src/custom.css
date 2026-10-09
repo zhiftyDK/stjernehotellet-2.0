@@ -1,0 +1,42 @@
+/* ---- Fullscreen game, hide everything outside it ---- */
+html,
+body {
+    margin: 0;
+    height: 100%;
+    overflow: hidden;
+    background: #000 !important;
+    overscroll-behavior: none;
+}
+
+.ramme {
+    max-width: none;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* Largest size that fits the screen while keeping the 16:9 (1365x768) ratio */
+.ramme > .spil,
+.ramme > canvas.vent {
+    flex: none;
+    width: min(100vw, calc(100vh * 1365 / 768));
+    width: min(100vw, calc(100dvh * 1365 / 768));
+}
+
+.ramme canvas,
+.minispil,
+.minispil-flade {
+    border-radius: 0;
+}
+
+/* Hide everything outside the game: Nyheder/Info buttons, profile picture, cheat box */
+.under-spil,
+.profil,
+.profil-snyd {
+    display: none !important;
+}

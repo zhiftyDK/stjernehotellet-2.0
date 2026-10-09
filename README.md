@@ -91,28 +91,31 @@
 
 ## Kom i gang
 
-Spillet er skrevet i almindelig HTML, CSS og JavaScript (ES-moduler) – **der er intet build-trin**. Ret en fil, genindlæs siden, og du kan se ændringen.
+Spillet er skrevet i almindelig HTML, CSS og JavaScript (ES-moduler). Selve spillet i `src/` kan køres uden build – ret en fil, genindlæs siden, og du kan se ændringen. Et build-trin (valgfrit) laver en hurtig, minificeret version og Windows-programmet.
 
 ### Kør det lokalt
 
-1. Sørg for at mapperne `data/` og `profil/` ligger ved siden af `index.html`.
-2. Start en lille webserver i projektmappen (browsere tillader ikke ES-moduler direkte fra `file://`):
+```bash
+npm install          # første gang
+npm run serve        # serverer src/ på http://127.0.0.1:5500
+```
 
-   ```bash
-   # Python
-   python3 -m http.server 8000
+(Browsere tillader ikke ES-moduler direkte fra `file://`, derfor skal der en lille webserver til. Du kan også bruge *Live Server* i VS Code på mappen `src/`.)
 
-   # eller Node
-   npx serve
-   ```
+### Byg
 
-3. Åbn [http://localhost:8000](http://localhost:8000).
+```bash
+npm run build web        # hjemmeside        ->  dist/web/
+npm run build windows    # Windows-program + installer  ->  dist/app/ og dist/installer/Stjernehotellet-Setup.exe
+```
 
-Du kan også bruge f.eks. *Live Server* i VS Code.
+- `build web` samler og minificerer JavaScript med esbuild og kopierer resten af spillet. Læg indholdet af `dist/web/` på en webserver.
+- `build windows` pakker spillet i Electron og laver derefter installationsprogrammet med [Inno Setup 6](https://jrsoftware.org/isinfo.php) (`winget install JRSoftware.InnoSetup`). Er Inno Setup ikke installeret, får du stadig programmet i `dist/app/`.
+- Vil du teste Electron-udgaven uden at bygge: `npm start`.
 
 ### Som programmet på computeren (Electron)
 
-Spillet kan pakkes ind i en Electron-app. Her ligger gemte spil i en fil (`saves.json`) i programmets brugermappe, så de ikke afhænger af, hvilken port spillet kører på.
+Her ligger gemte spil i en fil (`saves.json`) i programmets brugermappe, så de ikke afhænger af, hvilken port spillet kører på.
 
 ## Gemte spil
 
@@ -127,21 +130,27 @@ Spillet kan pakkes ind i en Electron-app. Her ligger gemte spil i en fil (`saves
 ## Projektets opbygning
 
 ```text
-index.html          Siden og import-map
-css/                Typografi og layout
-img/                Logoer (vektor-SVG)
-vendor/react.js     React 18 som én fil (tredjepart)
-js/
-├─ main.js          Indgang
-├─ ui/              App og menuer
-├─ screens/         Startskærm og hovedskærm
-├─ game/            Hotel, verden og spillogik
-├─ engine/          Animation, tweens og konstanter
-├─ render/          Tegning på canvas
-├─ audio/           Lyd og musik
-├─ storage/         Gemte spil
-└─ minigames/       De 12 minispil
+src/                Selve spillet (alt det, browseren henter)
+├─ index.html       Siden
+├─ css/, custom.css Typografi og layout
+├─ img/             Logoer (vektor-SVG)
+├─ profil/          Profilbillede og talebobler
+├─ data/            Spildata: billeder, lyd og animationer
+└─ js/
+   ├─ main.js       Indgang
+   ├─ ui/           App og menuer
+   ├─ screens/      Startskærm og hovedskærm
+   ├─ game/         Hotel, verden og spillogik
+   ├─ engine/       Animation, tweens og konstanter
+   ├─ render/       Tegning på canvas
+   ├─ audio/        Lyd og musik
+   ├─ storage/      Gemte spil
+   └─ minigames/    De 12 minispil
+electron/           Windows-programmet (hovedproces, preload, ikoner)
+installer/          Inno Setup-script til installationsprogrammet
+scripts/            Build-kommandoerne (npm run build web / windows) og testserver
 docs/               Billeder og teknisk dokumentation
+dist/               Byggeresultat (oprettes af build, ikke i git)
 ```
 
 Teknisk dokumentation til udviklere (på engelsk) ligger i [`docs/TEKNISK.md`](docs/TEKNISK.md).

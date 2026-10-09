@@ -1,4 +1,3 @@
-# Dependencies, build output and installers inside the app folder
-/app/node_modules/
-/app/out/
-/app/installer/
+# Dependencies and all build output (dist/ holds the web build, the Windows program and the installer)
+/node_modules/
+/dist/

@@ -1,0 +1,20 @@
+{
+  "name": "stjernehotellet",
+  "version": "1.0.0",
+  "description": "Byg Pixelines hotel, tag imod gæster og kendte gæster, og spil minispillene på øen.",
+  "author": "zhiftyDK",
+  "license": "ISC",
+  "private": true,
+  "type": "module",
+  "main": "electron/main.cjs",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "serve": "node scripts/serve.mjs",
+    "start": "electron ."
+  },
+  "devDependencies": {
+    "@electron/packager": "^20.3.0",
+    "electron": "^44.7.0",
+    "esbuild": "^0.25.0"
+  }
+}
