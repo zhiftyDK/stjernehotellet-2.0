@@ -1,12 +1,14 @@
 <div align="center">
 
-<img src="img/logo-pixeline.svg" alt="Pixeline" width="460">
+<img src="src/img/logo-pixeline.svg" alt="Pixeline" width="460">
 <br>
-<img src="img/logo-stjernehotellet.svg" alt="Stjernehotellet" width="420">
+<img src="src/img/logo-stjernehotellet.svg" alt="Stjernehotellet" width="420">
 
 ### Byg dit eget hotel, tag imod gæster og spil minispillene på øen
 
 <br>
+
+[![Spil i browseren](https://img.shields.io/badge/%E2%96%B6%20Spil%20i%20browseren-GitHub%20Pages-2ea44f?style=for-the-badge&logo=googlechrome&logoColor=white)](https://zhiftydk.github.io/stjernehotellet-2.0/)
 
 [![Download til Windows](https://img.shields.io/badge/%E2%AC%87%20Download%20til%20Windows-v0.0.1-0495d8?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/zhiftyDK/stjernehotellet-2.0/releases/tag/v0.0.1)
 
