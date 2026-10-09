@@ -1,8 +1,8 @@
 <div align="center">
 
-<img src="src/img/logo-pixeline.svg" alt="Pixeline" width="460">
+<img src="img/logo-pixeline.svg" alt="Pixeline" width="460">
 <br>
-<img src="src/img/logo-stjernehotellet.svg" alt="Stjernehotellet" width="420">
+<img src="img/logo-stjernehotellet.svg" alt="Stjernehotellet" width="420">
 
 ### Byg dit eget hotel, tag imod gæster og spil minispillene på øen
 
@@ -112,6 +112,16 @@ npm run build windows    # Windows-program + installer  ->  dist/app/ og dist/in
 - `build web` samler og minificerer JavaScript med esbuild og kopierer resten af spillet. Læg indholdet af `dist/web/` på en webserver.
 - `build windows` pakker spillet i Electron og laver derefter installationsprogrammet med [Inno Setup 6](https://jrsoftware.org/isinfo.php) (`winget install JRSoftware.InnoSetup`). Er Inno Setup ikke installeret, får du stadig programmet i `dist/app/`.
 - Vil du teste Electron-udgaven uden at bygge: `npm start`.
+
+### Udgiv på GitHub Pages
+
+Spillet er statisk og kan ligge på GitHub Pages. Workflowet `.github/workflows/pages.yml` bygger webudgaven (`npm run build web`) og udgiver den automatisk, hver gang der pushes til `main`.
+
+Engangsopsætning:
+
+1. Commit `package-lock.json` (oprettes af `npm install`) og mappen `.github/`.
+2. På GitHub: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
+3. Push til `main`. Siden kommer på `https://<brugernavn>.github.io/<repo>/`.
 
 ### Som programmet på computeren (Electron)
 
