@@ -10,7 +10,7 @@
 
 [![Spil i browseren](https://img.shields.io/badge/%E2%96%B6%20Spil%20i%20browseren-GitHub%20Pages-2ea44f?style=for-the-badge&logo=googlechrome&logoColor=white)](https://zhiftydk.github.io/stjernehotellet-2.0/)
 
-[![Download til Windows](https://img.shields.io/badge/%E2%AC%87%20Download%20til%20Windows-v0.0.1-0495d8?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/zhiftyDK/stjernehotellet-2.0/releases/tag/v0.0.1)
+[![Download til Windows](https://img.shields.io/github/v/release/zhiftyDK/stjernehotellet-2.0?include_prereleases&style=for-the-badge&label=%E2%AC%87%20Download%20til%20Windows&logo=windows&logoColor=white&color=0495d8)](https://github.com/zhiftyDK/stjernehotellet-2.0/releases/latest)
 
 ![Fanprojekt](https://img.shields.io/badge/Fanprojekt-ikke%20officielt-ff69b4?style=flat-square)
 [![Release](https://img.shields.io/github/v/release/zhiftyDK/stjernehotellet-2.0?include_prereleases&style=flat-square&label=Release&color=success)](https://github.com/zhiftyDK/stjernehotellet-2.0/releases)
